@@ -1,0 +1,36 @@
+<h1 class="text-center">Formulario de Contacto</h1>
+<section class="container-sm">
+  <form class="form-group" [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <section class="m-3">
+      <label for="nombre">Nombres :</label>
+      <input type="text" class="form-control" formControlName="nombre"
+      [ngStyle]="{'border-color': nombre?.invalid && (nombre?.dirty || nombre?.touched)?'red':'blue'}">
+    </section>
+    <section class="m-3">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" formControlName="email"
+      [ngStyle]="{'border-color': email?.invalid && (email?.dirty || email?.touched)?'red':'blue'}">
+    </section>
+    <section class="m-3">
+      <label for="telefono?">Telefono:</label>
+      <input type="text" class="form-control" formControlName="telefono" maxlength="9"
+      [ngStyle]="{'border-color': telefono?.invalid && (telefono?.dirty || telefono?.touched)?'red':'blue'}">
+    </section>
+    <section class="m-3">
+      <label for="asunto">Asunto:</label>
+      <input type="text" class="form-control" formControlName="asunto"
+      [ngStyle]="{'border-color': asunto?.invalid && (asunto?.dirty || asunto?.touched)?'red':'blue'}">
+    </section>
+    <section class="form-group">
+      <label for="mensaje">Mensaje :</label>
+      <textarea class="form-control" name="mensaje" 
+      id="" cols="5" rows="5"
+      formControlName="mensaje"></textarea>
+  </section>
+    <section class="m-3 d-flex align-items-center justify-content-center" >
+      <input type="submit" value="Enviar"class="btn btn-primary "[disabled]="!formData.valid">
+      <button class="btn btn-light" (click)="formData.reset()">Limpiar</button>
+    </section>
+    <section class="text-primary fw-bold">{{resultado}}</section>
+  </form>
+</section>
